@@ -75,7 +75,7 @@ button {
   text-align: center;
   height: 100vh; /* Full viewport height */
   color: #fff; /* Text color for contrast */
-  background-image: url('/hero-backgound.png'); /* Replace with your image path */
+  background-image: url('hero-backgound.png'); /* Replace with your image path */
   background-size: cover; /* Ensures the image covers the entire section */
   background-position: center; /* Centers the image */
   background-repeat: no-repeat; /* Prevents the image from repeating */
