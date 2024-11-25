@@ -3,7 +3,7 @@ const cartTotal = document.getElementById('cart-total');
 let total = 0;
 
 document.body.style.transform = "scale(0.8)";
-document.body.style.transformOrigin = "top left";
+document.body.style.transformOrigin = "top top";
 document.body.style.width = "300%";
 document.body.style.height = "300%";
 
