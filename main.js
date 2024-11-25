@@ -1,11 +1,16 @@
+// Check if the website is Legacy Apparell (based on the domain or title)
+if (document.title.includes("Legacy Apparell")) {
+  // Apply a zoom of 50%
+  document.body.style.transform = "scale(0.5)";
+  document.body.style.transformOrigin = "top left";
+  document.body.style.width = "200%"; // Adjust the width to fit the scaled content
+  document.body.style.height = "200%"; // Adjust the height to fit the scaled content
+}
+
+// Select the cart items container and total elements
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 let total = 0;
-
-document.body.style.transform = "scale(0.8)";
-document.body.style.transformOrigin = "top top";
-document.body.style.width = "300%";
-document.body.style.height = "300%";
 
 // Retrieve the cart from localStorage or initialize it
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
@@ -23,7 +28,7 @@ if (cart.length === 0) {
       <div class="cart-item-details">
         <h3>${item.name}</h3>
         <p>₹${item.price}</p>
-        <button class="remove-item" data-index="${index}">Remove</button> <!-- Add data-index attribute -->
+        <button class="remove-item" data-index="${index}">Remove</button>
       </div>
     `;
     cartItemsContainer.appendChild(cartItem);
@@ -52,6 +57,6 @@ document.querySelectorAll('.remove-item').forEach(button => {
     localStorage.setItem('cart', JSON.stringify(cart));
 
     // Re-render the cart items
-    location.reload(); // Reload to reflect the changes (or you can use a more sophisticated approach without reloading)
+    location.reload(); // Reload to reflect the changes
   });
 });
