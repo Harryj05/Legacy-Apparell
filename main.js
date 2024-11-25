@@ -2,6 +2,11 @@ const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 let total = 0;
 
+document.body.style.transform = "scale(0.5)";
+document.body.style.transformOrigin = "top left";
+document.body.style.width = "200%";
+document.body.style.height = "200%";
+
 // Retrieve the cart from localStorage or initialize it
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
