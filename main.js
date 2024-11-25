@@ -1,13 +1,13 @@
-// Check if the website is Legacy Apparell (based on the domain or title)
+// Check if the website is "Legacy Apparell" based on the title
 if (document.title.includes("Legacy Apparell")) {
   // Apply a zoom of 50%
-  document.body.style.transform = "scale(0.5)";
+  document.body.style.transform = "scale(0.9)";
   document.body.style.transformOrigin = "top left";
-  document.body.style.width = "200%"; // Adjust the width to fit the scaled content
-  document.body.style.height = "200%"; // Adjust the height to fit the scaled content
+  document.body.style.width = "111.11%"; // Adjust the width to fit the scaled content
+  document.body.style.height = "111.11%"; // Adjust the height to fit the scaled content
 }
 
-// Select the cart items container and total elements
+// Cart Management
 const cartItemsContainer = document.getElementById('cart-items');
 const cartTotal = document.getElementById('cart-total');
 let total = 0;
@@ -15,7 +15,7 @@ let total = 0;
 // Retrieve the cart from localStorage or initialize it
 const cart = JSON.parse(localStorage.getItem('cart')) || [];
 
-// Check if the cart is empty
+// Render the cart
 if (cart.length === 0) {
   cartItemsContainer.innerHTML = '<p>Your cart is empty.</p>';
 } else {
@@ -33,7 +33,7 @@ if (cart.length === 0) {
     `;
     cartItemsContainer.appendChild(cartItem);
 
-    // Extract the price and update the total
+    // Calculate total
     const price = parseInt(item.price.replace('₹', '').trim());
     if (!isNaN(price)) {
       total += price;
@@ -41,22 +41,15 @@ if (cart.length === 0) {
   });
 }
 
-// Format the total to include commas for better readability
-const formattedTotal = total.toLocaleString();
+// Update cart total with formatting
+cartTotal.innerHTML = `Total: ₹${total.toLocaleString()}`;
 
-// Update the cart total with proper currency display
-cartTotal.innerHTML = `Total: ₹${formattedTotal}`;
-
-// Add event listeners for the "Remove" button
+// Add "Remove" functionality
 document.querySelectorAll('.remove-item').forEach(button => {
   button.addEventListener('click', (e) => {
-    const index = e.target.getAttribute('data-index'); // Get the index of the item to remove
-    cart.splice(index, 1); // Remove the item from the cart array
-
-    // Save the updated cart to localStorage
-    localStorage.setItem('cart', JSON.stringify(cart));
-
-    // Re-render the cart items
-    location.reload(); // Reload to reflect the changes
+    const index = e.target.getAttribute('data-index');
+    cart.splice(index, 1); // Remove the item
+    localStorage.setItem('cart', JSON.stringify(cart)); // Save updated cart
+    location.reload(); // Refresh to reflect changes
   });
 });
